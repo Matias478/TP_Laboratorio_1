@@ -5,7 +5,7 @@ int sumarNumeros(int, int);
 int restarNumeros(int, int);
 int multiplicarNumeros(int, int);
 float dividirNumeros(int, int);
-//int factorizarNumeros(int );
+int factorizarNumeros(int );
 int main()
 {
     int numeroA;
@@ -14,7 +14,7 @@ int main()
     int restar;
     int multiplicar;
     float dividir;
-    //int factorizar;
+    int factorizar;
     char operacionRealizada;
 
     printf("ingrese s(sumar), r(resta), m(multiplicacion), d(division): ");
