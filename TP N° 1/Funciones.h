@@ -1,40 +1,42 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-/** \brief int Hace la suma de los numeros ingresados
+
+/** \brief float Hace la suma de los numeros ingresados
  *
- * \param int Uno de los valores al cual se le aplica la operacion
- * \param int Otro de los valores
+ * \param float Uno de los valores al cual se le aplica la operacion
+ * \param float Otro de los valores
  * \return El resultado de la suma de los numeros
  *
  */
-int sumarNumeros(int, int);
+float sumarNumeros(float, float);
 
-/** \brief int Hace la resta de los numeros ingresados
+/** \brief float Hace la resta de los numeros ingresados
  *
- * \param int Uno de los numeros que participa en la operacion
- * \param int Otro de los numeros que tambien participa
+ * \param float Uno de los numeros que participa en la operacion
+ * \param float Otro de los numeros que tambien participa
  * \return El resultado de la resta
  *
  */
-int restarNumeros(int, int);
+float restarNumeros(float, float);
 
-/** \brief int Realiza la multiplicacion de los numeros ingresados
+/** \brief float Realiza la multiplicacion de los numeros ingresados
  *
- * \param int Uno de los numeros que participa en la operacion
- * \param int Otro de los numeros que tambien participa en la operacion
+ * \param float Uno de los numeros que participa en la operacion
+ * \param float Otro de los numeros que tambien participa en la operacion
  * \return El resultado de la multiplicacion
  *
  */
-int multiplicarNumeros(int, int);
+float multiplicarNumeros(float, float);
 
 /** \brief float Realiza la division de dos numeros enteros
  *
- * \param int Uno de los numeros que participa en la operacion
- * \param int Otro de los numeros que tambien participa en la operacion
+ * \param float Uno de los numeros que participa en la operacion
+ * \param float Otro de los numeros que tambien participa en la operacion
  * \return El resultado de la division
  *
  */
-float dividirNumeros(int, int);
+float dividirNumeros(float, float);
 
 /** \brief int Calcula el factorial de un numero entero
  *
@@ -51,3 +53,12 @@ int factorizarNumeroA(int );
  *
  */
 int factorizarNumeroB(int );
+
+/** \brief int Contiene el menu con las opciones a elejir
+ *
+ * \param
+ * \param
+ * \return la opcion que se elijio
+ *
+ */
+int menu();
