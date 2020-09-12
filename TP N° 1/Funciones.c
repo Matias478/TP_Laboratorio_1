@@ -28,10 +28,9 @@ float dividirNumeros(float numeroA, float numeroB)
     return dividir;
 }
 
-int factorizarNumeroA(int numeroA)
+long int factorizarNumeroA(int numeroA)
 {
     int factorizar;
-
     if(numeroA== 0)
     {
         factorizar = 1;
@@ -43,7 +42,7 @@ int factorizarNumeroA(int numeroA)
     return factorizar;
 }
 
-int factorizarNumeroB(int numeroB)
+long int factorizarNumeroB(int numeroB)
 {
     int factorizarB;
     if(numeroB==0)
@@ -63,8 +62,8 @@ int menu()
     float restar;
     float multiplicar;
     float dividir;
-    int factorizar;
-    int factorizarB;
+    long int factorizar;
+    long int factorizarB;
     int opcion;
     int banderaPrimerNumero;
     int banderaSegundoNumero;
@@ -146,11 +145,25 @@ int menu()
                             printf("\nSe realizara la division entre (%.2f/%.2f) \n",numeroA, numeroB);
                         }
 
-                        factorizar=factorizarNumeroA(numeroA);
-                        printf("\nSe realizara el factorial de (%.2f) \n", numeroA );
+                        if(numeroA>=0 && numeroA==(int)numeroA )
+                        {
+                              factorizar=factorizarNumeroA(numeroA);
+                              printf("\nSe realizara el factorial de (%.2f) \n", numeroA );
+                        }else
+                        {
+                            printf("\nNo se puede realizar el factorial del numero A porque es un numero negativo o decimal\n");
+                        }
 
-                        factorizarB=factorizarNumeroB(numeroB);
-                        printf("\nSe realizara el factorial de (%.2f) \n", numeroB );
+
+                        if(numeroB>=0 && numeroB==(int)numeroB)
+                        {
+                            factorizarB=factorizarNumeroB(numeroB);
+                            printf("\nSe realizara el factorial de (%.2f) \n", numeroB );
+                        }else
+                        {
+                            printf("\nNo se puede realizar el factorial del numero B porque es un numero negativo o decimal\n");
+                        }
+
                     }
                 }
             break;
@@ -172,8 +185,23 @@ int menu()
                         printf("\nLa division de %.2f/%.2f da: %.2f\n",numeroA, numeroB, dividir);
                     }
 
-                printf("\nEl factorial de %.2f, solo tomando su parte entera, es: %d\n", numeroA, factorizar);
-                printf("\nEl factorial de %.2f, solo tomando su parte entera, es: %d\n", numeroB, factorizarB);
+                     if(numeroA>=0 && numeroA==(int)numeroA )
+                    {
+                        printf("\nEl factorial de %.2f, solo tomando su parte entera, es: %ld\n", numeroA, factorizar);
+                    }else
+                    {
+                        printf("\nError, no se puede calcular por un decimal");
+                    }
+
+
+                    if(numeroB>=0 && numeroB==(int)numeroB)
+                    {
+                        printf("\nEl factorial de %.2f, solo tomando su parte entera, es: %ld\n", numeroB, factorizarB);
+                    }else
+                    {
+                        printf("\nError, no se puede calcular por un decimal\n");
+                    }
+
                 }else
                 {
                     printf("No se pueden realizar las operaciones porque no ingreso los dos valores");
