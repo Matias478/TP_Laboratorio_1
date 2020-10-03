@@ -5,9 +5,15 @@
 	<stdio.h>
 	<stdlib.h>
 
-1600720452 source:c:\users\matias\desktop\tp_laboratorio\tp_laboratorio_1\tp_laboratorio_2\arrayemployees.c
+1601692927 source:c:\users\matias\desktop\tp_laboratorio\tp_laboratorio_1\tp_laboratorio_2\arrayemployees.c
+	"ArrayEmployees.h"
 
-1601174023 source:c:\users\matias\desktop\tp_laboratorio\tp_laboratorio_1\tp_laboratorio_2\main.c
+1601692700 source:c:\users\matias\desktop\tp_laboratorio\tp_laboratorio_1\tp_laboratorio_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayEmployees.h"
+
+1601691786 c:\users\matias\desktop\tp_laboratorio\tp_laboratorio_1\tp_laboratorio_2\arrayemployees.h
 	<stdio.h>
 	<stdlib.h>
 
