@@ -87,3 +87,35 @@
 
 1603929149 c:\users\matias\desktop\win_32\employee.c
 
+1603813724 source:c:\users\matias\desktop\tp_laboratorio\tp_laboratorio_1\win_32\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1603929097 c:\users\matias\desktop\tp_laboratorio\tp_laboratorio_1\win_32\linkedlist.h
+
+1604405234 c:\users\matias\desktop\tp_laboratorio\tp_laboratorio_1\win_32\employee.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1603929097 source:c:\users\matias\desktop\tp_laboratorio\tp_laboratorio_1\win_32\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1603929097 c:\users\matias\desktop\tp_laboratorio\tp_laboratorio_1\win_32\controller.h
+
+1533118622 source:c:\users\matias\desktop\tp_laboratorio\tp_laboratorio_1\win_32\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1606138983 source:c:\users\matias\desktop\tp_laboratorio\tp_laboratorio_1\win_32\employee.c
+	"Employee.h"
+

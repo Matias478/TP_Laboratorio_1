@@ -7,11 +7,10 @@ Employee* employee_new()
     pEmpleado = (Employee*)malloc(sizeof(Employee));
     if(pEmpleado!=NULL)
     {
-        if(employee_setId(pEmpleado,0)==1 && employee_setNombre(pEmpleado,"0")==1
-            && employee_setHorasTrabajadas(pEmpleado,0)==1 && employee_setSueldo(pEmpleado,0)==1)
-        {
-
-        }
+        employee_setId(pEmpleado,0);
+        employee_setNombre(pEmpleado,"0");
+        employee_setHorasTrabajadas(pEmpleado,0);
+        employee_setSueldo(pEmpleado,0);
     }
     return pEmpleado;
 }
@@ -20,11 +19,13 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
     Employee* pEmpleado;
 
     pEmpleado = employee_new();
+
     if(pEmpleado!=NULL)
     {
-
-
-
+    employee_setId(pEmpleado, atoi(idStr));
+    employee_setNombre(pEmpleado, nombreStr);
+    employee_setHorasTrabajadas(pEmpleado, atoi(horasTrabajadasStr));
+    employee_setSueldo(pEmpleado, atoi(sueldoStr));
     }
     return pEmpleado;
 }
