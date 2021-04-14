@@ -1,3 +1,10 @@
+/*
+ * Funciones.c
+ *
+ *  Created on: 12 abr. 2021
+ *      Author: MATIAS
+ */
+
 #include "Funciones.h"
 
 float sumarNumeros(float numeroA, float numeroB)
@@ -28,7 +35,7 @@ float dividirNumeros(float numeroA, float numeroB)
     return dividir;
 }
 
-long int factorizarNumeroA(int numeroA)
+long long int factorizarNumeroA(int numeroA)
 {
     int factorizar;
     if(numeroA== 0)
@@ -42,7 +49,7 @@ long int factorizarNumeroA(int numeroA)
     return factorizar;
 }
 
-long int factorizarNumeroB(int numeroB)
+long long int factorizarNumeroB(int numeroB)
 {
     int factorizarB;
     if(numeroB==0)
@@ -62,8 +69,8 @@ int menu()
     float restar;
     float multiplicar;
     float dividir;
-    long int factorizar;
-    long int factorizarB;
+    long long int factorizar;
+    long long int factorizarB;
     int opcion;
     int banderaPrimerNumero;
     int banderaSegundoNumero;
@@ -122,7 +129,6 @@ int menu()
                         banderaSegundoNumero=1;
                         banderaPrimerNumero=1;
                     }
-
                     else
                     {
                         sumar=sumarNumeros(numeroA, numeroB);
@@ -170,11 +176,11 @@ int menu()
             case 4:
                 if(banderaPrimerNumero==1 && banderaSegundoNumero==1)
                 {
-                printf("\nLa suma de %.2f+%.2f es: %.2f\n",numeroA, numeroB, sumar);
+                printf("\nLa suma de (%.2f+%.2f) es: %.2f\n",numeroA, numeroB, sumar);
 
-                printf("\nLa resta de %.2f-%.2f es: %.2f\n",numeroA, numeroB, restar);
+                printf("\nLa resta de (%.2f-%.2f) es: %.2f\n",numeroA, numeroB, restar);
 
-                printf("\nLa multiplicacion de %.2f*%.2f da: %.2f\n",numeroA, numeroB, multiplicar);
+                printf("\nLa multiplicacion de (%.2f*%.2f) da: %.2f\n",numeroA, numeroB, multiplicar);
 
                 if(numeroB==0)
                     {
@@ -182,12 +188,12 @@ int menu()
 
                     }else
                     {
-                        printf("\nLa division de %.2f/%.2f da: %.2f\n",numeroA, numeroB, dividir);
+                        printf("\nLa division de (%.2f/%.2f) da: %.2f\n",numeroA, numeroB, dividir);
                     }
 
                      if(numeroA>=0 && numeroA==(int)numeroA )
                     {
-                        printf("\nEl factorial de %.2f, solo tomando su parte entera, es: %ld\n", numeroA, factorizar);
+                        printf("\nEl factorial de (%.2f), solo tomando su parte entera, es: %lld\n", numeroA, factorizar);
                     }else
                     {
                         printf("\nError, no se puede calcular por un decimal");
@@ -196,7 +202,7 @@ int menu()
 
                     if(numeroB>=0 && numeroB==(int)numeroB)
                     {
-                        printf("\nEl factorial de %.2f, solo tomando su parte entera, es: %ld\n", numeroB, factorizarB);
+                        printf("\nEl factorial de (%.2f), solo tomando su parte entera, es: %lld\n", numeroB, factorizarB);
                     }else
                     {
                         printf("\nError, no se puede calcular por un decimal\n");

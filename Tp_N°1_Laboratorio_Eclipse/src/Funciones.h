@@ -1,3 +1,13 @@
+/*
+ * Funciones.h
+ *
+ *  Created on: 12 abr. 2021
+ *      Author: MATIAS
+ */
+
+#ifndef FUNCIONES_H_
+#define FUNCIONES_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -44,7 +54,7 @@ float dividirNumeros(float, float);
  * \return int El resultado del factorial del numero
  *
  */
-long int factorizarNumeroA(int );
+long long int factorizarNumeroA(int );
 
 /** \brief int Calcula el factorial de un numero entero
  *
@@ -52,7 +62,7 @@ long int factorizarNumeroA(int );
  * \return int El resultado del factorial del numero
  *
  */
-long int factorizarNumeroB(int );
+long long int factorizarNumeroB(int );
 
 /** \brief int Contiene el menu con las opciones a elejir
  *
@@ -62,3 +72,6 @@ long int factorizarNumeroB(int );
  *
  */
 int menu();
+
+
+#endif /* FUNCIONES_H_ */
