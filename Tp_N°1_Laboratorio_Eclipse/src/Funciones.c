@@ -4,7 +4,7 @@
  *  Created on: 12 abr. 2021
  *      Author: MATIAS
  */
-
+//****No fui capas de encontrar la fuente del warning de la mascara %lld, al profe le habia salido el mismo warning y no supo como solucionarlo (eclipse problems) *****
 #include "Funciones.h"
 
 float sumarNumeros(float numeroA, float numeroB)
@@ -61,6 +61,7 @@ long long int factorizarNumeroB(int numeroB)
     }
     return factorizarB;
 }
+
 int menu()
 {
     float numeroA;
