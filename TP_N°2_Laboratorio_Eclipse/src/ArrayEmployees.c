@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include<ctype.h>
+#include <ctype.h>
 #include "ArrayEmployees.h"
 
 int initEmployees(eEmpleado lista[], int tam)
@@ -23,7 +23,6 @@ int initEmployees(eEmpleado lista[], int tam)
     }
     return retorno;
 }
-
 int buscarLibre(eEmpleado lista[], int tam)
 {
     int index=-1;
@@ -40,12 +39,15 @@ int buscarLibre(eEmpleado lista[], int tam)
     }
     return index;
 }
-
 int addEmployee(eEmpleado lista[], int tam, int* pId)
 {
     eEmpleado unEmpleado;
     int todoOk=0;
     int indice;
+    int auxSector;
+    float auxSalary;
+    char sector[51];
+    char salary[51];
 
     system("cls");
     printf("      Alta de Empleados     \n");
@@ -60,19 +62,29 @@ int addEmployee(eEmpleado lista[], int tam, int* pId)
             TolowerToupperName(unEmpleado.nombre,"Nombre: ");
             TolowerToupperName(unEmpleado.apellido,"Apellido: ");
 
-            printf("Ingrese sueldo: ");
-            scanf("%f", &unEmpleado.sueldo);
+           do{
+                printf("Ingrese su salario: ");
+                fflush(stdin);
+                gets(salary);
+                auxSalary=validNumber(salary);
+            }while(auxSalary==0);
+            unEmpleado.sueldo=atof(salary);
             while (unEmpleado.sueldo < 0 )
             {
                 printf("Reingrese el salario del empleado: \n");
                 scanf("%f",&unEmpleado.sueldo);
             }
 
-            printf("Ingrese sector(Entre 0 y 999): ");
-            scanf("%d", &unEmpleado.sector);
-            while(unEmpleado.sector < 0 || unEmpleado.sector>999)
+           do{
+                printf("Ingrese sector(Entre 0 y 999): ");
+                fflush(stdin);
+                gets(sector);
+                auxSector=validNumber(sector);
+            }while(auxSector==0);
+            unEmpleado.sector=atoi(sector);
+            while(unEmpleado.sector<0 || unEmpleado.sector>999)
             {
-                printf("Se ingreso un sector incorrecto.Reingrese el sector: ");
+                printf("Se ingreso un sector incorrecto!!!.Reingrese el sector(Entre 0 y 999): ");
                 scanf("%d", &unEmpleado.sector);
             }
 
@@ -180,6 +192,10 @@ int ModifyEmployees(eEmpleado lista[],int tam)
     int auxId;
     int index;
     int opcion;
+    int auxSector;
+    char sector[51];
+    float auxSalary;
+    char salary[51];
     system("cls");
     printf("       Modificar Empleado      \n");
     MostrarEmpleados(lista,tam);
@@ -222,8 +238,13 @@ int ModifyEmployees(eEmpleado lista[],int tam)
                                 system("pause");
                                 break;
                             case 3:
-                                printf("\nIngrese el nuevo sueldo del empleado: \n");
-                                scanf("%f", &lista[i].sueldo);
+                                do{
+                                    printf("Ingrese el nuvo salario del empleado: ");
+                                    fflush(stdin);
+                                    gets(salary);
+                                    auxSalary=validNumber(salary);
+                                }while(auxSalary==0);
+                                lista[i].sueldo=atof(salary);
                                 while (lista[i].sueldo < 0 )
                                 {
                                     printf("Reingrese el salario del empleado: \n");
@@ -232,18 +253,23 @@ int ModifyEmployees(eEmpleado lista[],int tam)
                                 system("pause");
                                 break;
                             case 4:
-                                printf("Ingrese el nuevo sector del empleado(Entre 0 y 999): ");
-                                scanf("%d", &lista[i].sector);
-                                while(lista[i].sector < 0 || lista[i].sector>999)
+                               do{
+                                    printf("Ingrese el nuevo sector del empleado(Entre 0 y 999): ");
+                                    fflush(stdin);
+                                    gets(sector);
+                                    auxSector=validNumber(sector);
+                                }while(auxSector==0);
+                                lista[i].sector=atoi(sector);
+                                while(lista[i].sector<0 || lista[i].sector>999)
                                 {
-                                    printf("Se ingreso un sector incorrecto.Reingrese el sector: ");
+                                    printf("Se ingreso un sector incorrecto!!!.Reingrese el sector(Entre 0 y 999): ");
                                     scanf("%d", &lista[i].sector);
                                 }
                                 system("pause");
                                 break;
                             case 5:
-                                printf("\nFin de las Modificaciones\n");
-                                system("pause");
+                                //printf("\nFin de las Modificaciones\n");
+                                //system("pause");
                                 break;
                         }
 
@@ -409,4 +435,19 @@ void TolowerToupperName(char name[],char* nombres)
         }
     }
     strcpy(name,nombre);
+}
+
+int validNumber(char number[])
+{
+    for(int i=0; i<strlen(number); i++)
+    {
+        if(!(isdigit(number[i])))
+        {
+            printf("\nINGRESA SOLO NUMEROS\n");
+            //getchar();
+            return 0;
+        }
+    }
+
+    return 1;
 }

@@ -146,4 +146,14 @@ void ActivarFlag(int* a);
  */
 void TolowerToupperName(char name[],char* nombres);
 
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
+int validNumber(char number[]);
+
+
 #endif /* ARRAYEMPLOYEES_H_ */
