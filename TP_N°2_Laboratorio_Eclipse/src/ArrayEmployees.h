@@ -146,14 +146,20 @@ void ActivarFlag(int* a);
  */
 void TolowerToupperName(char name[],char* nombres);
 
-/** \brief
+/** \brief valida si lo que si ingreso es un numero
  *
- * \param
- * \param
- * \return
+ * \param   number[] char
+ * \return int
  *
  */
 int validNumber(char number[]);
 
+/** \brief valida si lo que si ingreso es una cadena
+ *
+ * \param nombre[] char
+ * \return int
+ *
+ */
+int validarNombre(char nombre[]);
 
 #endif /* ARRAYEMPLOYEES_H_ */

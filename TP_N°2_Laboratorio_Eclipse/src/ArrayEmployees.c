@@ -414,14 +414,17 @@ void TolowerToupperName(char name[],char* nombres)
     char nombre[51];//19
     char buffer[128];
     int len;
+    int auxNombre;
     printf("Ingrese su %s ",nombres);
     fflush(stdin);
     gets(buffer);
-    while(isalpha(strlen(buffer)>51)==1)
+    auxNombre=validarNombre(buffer);
+    while(auxNombre==1)
     {
-        printf("Reingrese su %s ",nombres);
+        printf("Error ingreso un nombre incorrecto.Reingrese su %s ",nombres);
         fflush(stdin);
         gets(buffer);
+        auxNombre=validarNombre(buffer);
     }
     strcpy(nombre,buffer);
     strlwr(nombre);
@@ -450,4 +453,24 @@ int validNumber(char number[])
     }
 
     return 1;
+}
+int validarNombre(char nombre[])
+{
+    int i=0;
+    int sw=0;
+    int j;
+
+    j=strlen(nombre);
+
+    while(i<j && sw==0)
+    {
+        if(isalpha(nombre[i])!=0)
+        {
+            i++;
+        }
+        else{
+            sw=1;
+        }
+    }
+    return sw;
 }
