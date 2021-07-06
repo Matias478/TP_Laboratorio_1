@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
 #include "LinkedList.h"
 #include "Controller.h"
 #include "parser.h"
@@ -67,6 +69,10 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 int controller_addEmployee(LinkedList* pArrayListEmployee, int* pId)
 {
     int retorno=0;
+    int auxHoras;
+    int auxSueldo;
+    char horas[51];
+    char sueldo[51];
     Employee* auxEmp=NULL;
 
     system("cls");
@@ -78,23 +84,32 @@ int controller_addEmployee(LinkedList* pArrayListEmployee, int* pId)
         auxEmp=employee_new();
         if(auxEmp!=NULL)
         {
-            TolowerToupperName("nombre", auxEmp->nombre);
+            TolowerToupperName(auxEmp->nombre,"nombre: ");
             fflush(stdin);
             while(!employee_setNombre(auxEmp,auxEmp->nombre))
             {
                 TolowerToupperName("Error.Reingrese su nombre", auxEmp->nombre);
             }
 
-            printf("Ingrese las horas trabajadas: ");
-            scanf("%d", &auxEmp->horasTrabajadas);
+        do{
+                printf("Ingrese las horas trabajadas: ");
+                fflush(stdin);
+                gets(horas);
+                auxHoras=validNumber(horas);
+            }while(auxHoras==0);
+            auxEmp->horasTrabajadas=atoi(horas);
             while(!employee_setHorasTrabajadas(auxEmp,auxEmp->horasTrabajadas))
             {
                  printf("Error.Reingrese las horas trabajadas: ");
                 scanf("%d", &auxEmp->horasTrabajadas);
             }
-
-            printf("Ingrese el sueldo: ");
-            scanf("%f", &auxEmp->sueldo);
+        do{
+                printf("Ingrese el sueldo: ");
+                fflush(stdin);
+                gets(sueldo);
+                auxSueldo=validNumber(sueldo);
+            }while(auxSueldo==0);
+            auxEmp->sueldo=atof(sueldo);
             while(!employee_setSueldo(auxEmp,auxEmp->sueldo))
             {
                 printf("Error.Reingrese las horas trabajadas: ");
@@ -105,10 +120,8 @@ int controller_addEmployee(LinkedList* pArrayListEmployee, int* pId)
             //(*pId)++;
             ll_add(pArrayListEmployee,auxEmp);
             retorno=1;
-
         }
     }
-
     return retorno;
 }
 
@@ -134,12 +147,11 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
         index=employee_FindById(pArrayListEmployee,auxID);
         if(index != -1)
         {
-            //controller_ListEmployee(pArrayListEmployee);
             auxEmployee=(Employee*)ll_get(pArrayListEmployee,index);
-            opcion=ModificarDatoPorId(auxEmployee);
+            opcion=ModificarDatoPorId(auxEmployee,pArrayListEmployee);
             if(opcion==4)
             {
-                printf("modicado con exito");
+                printf("Modicado con exito");
             }
             else
             {
@@ -213,7 +225,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
     Employee* auxEmp=NULL;
     if(pArrayListEmployee!=NULL)
     {
-        printf("ID\t   Nombre   Horas Trabajadas\t   Sueldo\n");
+        printf("ID\t  Nombre \tHoras Trabajadas\t Sueldo\n");
         for(int i=0;i<ll_len(pArrayListEmployee);i++)
         {
             auxEmp=(Employee*)ll_get(pArrayListEmployee,i);

@@ -145,14 +145,13 @@ int employee_listAnEmployee(Employee* this)
                   && employee_getHorasTrabajadas(this,&horasTrabajadas)
                   && employee_getSueldo(this, &sueldo))
     {
-        printf(" %4d   %15s\t  %4d\t\t  %.2f\n",
+        printf(" %4d  %10s\t  %4d\t\t\t %.2f\n",
                id,
                nombre,
                horasTrabajadas,
                sueldo);
         retorno=1;
     }
-
     return retorno;
 }
 
@@ -183,45 +182,71 @@ int employee_FindById(LinkedList* pArrayListEmployee, int id)
 
 }
 
-int ModificarDatoPorId(Employee* miEmpleado)
+int ModificarDatoPorId(Employee* miEmpleado,LinkedList* pArrayListEmployee)
 {
     int opcion;
     char auxNombre[128];
-    int auxHorasTrabajadas;
+    int auxHoras;
     int auxSueldo;
-    do
+    char horas[51];
+    char sueldo[51];
+
+    if(pArrayListEmployee!=NULL)
     {
-        printf("Que desea modificar?: ");
-        printf("\n1.Nombre.\n2.Horas trabajadas.\n3.Sueldo.\n4.Salir\nIngrese opcion: ");
-        scanf("%d", &opcion);
-        while(opcion!=1 && opcion!=2 && opcion!=3 && opcion!=4)
+        do
         {
-            printf("Opcion incorrecta. Reingresela: ");
+            controller_ListEmployee(pArrayListEmployee);
+            printf("Que desea modificar?: ");
             printf("\n1.Nombre.\n2.Horas trabajadas.\n3.Sueldo.\n4.Salir\nIngrese opcion: ");
             scanf("%d", &opcion);
+            while(opcion!=1 && opcion!=2 && opcion!=3 && opcion!=4)
+            {
+                printf("Opcion incorrecta. Reingresela: ");
+                printf("\n1.Nombre.\n2.Horas trabajadas.\n3.Sueldo.\n4.Salir\nIngrese opcion: ");
+                scanf("%d", &opcion);
+            }
+            switch(opcion)
+            {
+            case 1:
+                TolowerToupperName(auxNombre,"nuevo nombre del empleado: ");
+                employee_setNombre(miEmpleado,auxNombre);
+                system("cls");
+                break;
+            case 2:
+                  do{
+                    printf("Ingrese las horas trabajadas: ");
+                    fflush(stdin);
+                    gets(horas);
+                    auxHoras=validNumber(horas);
+                }while(auxHoras==0);
+                miEmpleado->horasTrabajadas=atoi(horas);
+                while(!employee_setHorasTrabajadas(miEmpleado,miEmpleado->horasTrabajadas))
+                {
+                     printf("Error.Reingrese las horas trabajadas: ");
+                    scanf("%d", &miEmpleado->horasTrabajadas);
+                }
+                system("cls");
+                break;
+            case 3:
+                do{
+                    printf("Ingrese el sueldo: ");
+                    fflush(stdin);
+                    gets(sueldo);
+                    auxSueldo=validNumber(sueldo);
+                }while(auxSueldo==0);
+                miEmpleado->sueldo=atof(sueldo);
+                while(!employee_setSueldo(miEmpleado,miEmpleado->sueldo))
+                {
+                    printf("Error.Reingrese el sueldo: ");
+                    scanf("%f", &miEmpleado->sueldo);
+                }
+                system("cls");
+                break;
+            }
         }
-        switch(opcion)
-        {
-        case 1:
-            TolowerToupperName("nuevo nombre del empleado",auxNombre);
-            employee_setNombre(miEmpleado,auxNombre);
-            system("cls");
-            break;
-        case 2:
-            printf("Ingrese nuevas horas trabajadas del empleado: ");
-            scanf("%d",&auxHorasTrabajadas);
-            employee_setHorasTrabajadas(miEmpleado,auxHorasTrabajadas);
-            system("cls");
-            break;
-        case 3:
-            printf("Ingrese nuevo sueldo del empleado: ");
-            scanf("%d",&auxSueldo);
-            employee_setSueldo(miEmpleado,auxSueldo);
-            system("cls");
-            break;
-        }
+        while(opcion!=4);
     }
-    while(opcion!=4);
+
     return opcion;
 }
 
@@ -462,25 +487,81 @@ int BuscarMayorId(LinkedList* pArrayListEmployee,int* pId)
  */
 void TolowerToupperName(char name[],char* nombres)
 {
-    char nombre[128];
+    char nombre[51];//19
+    char buffer[128];
     int len;
+    int auxNombre;
 
-    printf("ingrese su %s: ",name);
+    printf("Ingrese su %s ",nombres);
     fflush(stdin);
-    scanf("%s",nombre);
-
-    strcpy(nombres,nombre);
-    strdup(nombres);
-    len = strlen(nombres);
-    nombres[0]=toupper(nombres[0]);
+    gets(buffer);
+    auxNombre=validarNombre(buffer);
+    while(auxNombre==1)
+    {
+        printf("Error ingreso un nombre incorrecto.Reingrese su %s ",nombres);
+        fflush(stdin);
+        gets(buffer);
+        auxNombre=validarNombre(buffer);
+    }
+    strcpy(nombre,buffer);
+    strlwr(nombre);
+    len = strlen(nombre);
+    *(nombre+0)=toupper(*(nombre+0));
     for(int i=0; i<len; i++)
     {
-        if(isspace(nombre[i]))
+        if(isspace(*(nombre+1)))
         {
-            nombre[i+1]=toupper(nombre[i+1]);
+            //nombre[i+1]=toupper(nombre[i+1]);
+            *(nombre+i+1)=toupper(*(nombre+i+1));
         }
     }
-    strcpy(nombres,nombre);
+    strcpy(name,nombre);
 }
 
+/** \brief
+ *
+ * \param number[] char
+ * \return int
+ *
+ */
+int validNumber(char* number)
+{
+    for(int i=0; i<strlen(number); i++)
+    {
+        if(!(isdigit(*(number+i))))
+        {
+            printf("\nINGRESA SOLO NUMEROS\n");
+            //getchar();
+            return 0;
+        }
+    }
 
+    return 1;
+}
+
+/** \brief
+ *
+ * \param nombre[] char
+ * \return int
+ *
+ */
+int validarNombre(char* nombre)
+{
+    int i=0;
+    int sw=0;
+    int j;
+
+    j=strlen(nombre);
+
+    while(i<j && sw==0)
+    {
+        if(isalpha(*(nombre+i))!=0)
+        {
+            i++;
+        }
+        else{
+            sw=1;
+        }
+    }
+    return sw;
+}

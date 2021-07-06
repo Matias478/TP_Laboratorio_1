@@ -119,9 +119,11 @@
 1605051319 source:c:\users\matias\desktop\tp_laboratorio\tp_laboratorio_1\win_32\employee.c
 	"Employee.h"
 
-1624313992 source:d:\codeblocks\proyectos\tp_laboratorio_3\controller.c
+1625542224 source:d:\codeblocks\proyectos\tp_laboratorio_3\controller.c
 	<stdio.h>
 	<stdlib.h>
+	<ctype.h>
+	<string.h>
 	"LinkedList.h"
 	"Controller.h"
 	"parser.h"
@@ -129,7 +131,7 @@
 
 1623683358 d:\codeblocks\proyectos\tp_laboratorio_3\linkedlist.h
 
-1624312090 d:\codeblocks\proyectos\tp_laboratorio_3\employee.h
+1625542090 d:\codeblocks\proyectos\tp_laboratorio_3\employee.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -137,10 +139,10 @@
 	"LinkedList.h"
 	"Controller.h"
 
-1624312102 source:d:\codeblocks\proyectos\tp_laboratorio_3\employee.c
+1625542268 source:d:\codeblocks\proyectos\tp_laboratorio_3\employee.c
 	"Employee.h"
 
-1624314796 source:d:\codeblocks\proyectos\tp_laboratorio_3\main.c
+1624318317 source:d:\codeblocks\proyectos\tp_laboratorio_3\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -150,7 +152,7 @@
 
 1624313543 d:\codeblocks\proyectos\tp_laboratorio_3\controller.h
 
-1624311018 source:d:\codeblocks\proyectos\tp_laboratorio_3\parser.c
+1625459062 source:d:\codeblocks\proyectos\tp_laboratorio_3\parser.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"

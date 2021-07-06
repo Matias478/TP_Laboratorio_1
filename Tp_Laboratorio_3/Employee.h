@@ -36,8 +36,8 @@ void employee_delete(Employee* this);
 int employee_listAnEmployee(Employee* this);
 
 int employee_FindById(LinkedList* pArrayListEmployee, int id);
-int ModificarDatoPorId(Employee* miEmpleado);
-
+//int ModificarDatoPorId(Employee* miEmpleado);
+int ModificarDatoPorId(Employee* miEmpleado,LinkedList* pArrayListEmployee);
 int BuscarMayorId(LinkedList* pArrayListEmployee,int* pId);
 
 int employee_CompareById(void* e1, void* e2);
@@ -47,6 +47,7 @@ int employee_CompareBySueldo(void* e1, void* e2);
 void criterioOrdenamiento(LinkedList* pArrayListEmployee);
 
 void TolowerToupperName(char name[],char* nombres);
-
+int validNumber(char* number);
+int validarNombre(char* nombre);
 
 #endif // employee_H_INCLUDED
